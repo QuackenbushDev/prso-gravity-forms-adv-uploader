@@ -122,6 +122,16 @@ class PrsoGformsAdvUploaderInit {
 				new PrsoAdvVideoUploader();
 			}
 		}
+
+		//Include S3 Uploader plugin if requested
+		if( isset($this->plugin_options['s3_plugin_status']) && ($this->plugin_options['video_plugin_status'] == 1) ) {
+			$s3_path = $this->plugin_inc_path . '/S3Uploader/class.prso-adv-s3-uploader.php';
+
+			if( file_exists($s3_path) ) {
+				include_once( $s3_path );
+				new PrsoAdvS3Uploader();
+			}
+		}
 		
 	}
 	

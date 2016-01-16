@@ -635,6 +635,51 @@ if ( !class_exists( "PrsoGformsAdvUploaderOptions" ) ) {
 			$this->sections[] = array(
 				'type' => 'divide',
 			);
+
+			$this->sections[] = array(
+				'title' => __('S3 Upload Settings', $this->text_domain),
+				'desc' => __('S3 file upload options', $this->text_domain),
+				'icon' => 'el-icon-cogs',
+				//'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
+				'fields' => array(
+					array(
+						'id'			=> 's3_plugin_status',
+						'type' 			=> 'switch',
+						'title' 		=> __('Enable AWS S3 Upload', $this->text_domain),
+						'subtitle'		=> __('Enable uploading all files to AWS', $this->text_domain),
+						'desc' 			=> __('', $this->text_domain),
+						"default" 		=> '0',
+					),
+					array(
+						'id'			=> 'aws_key_id',
+						'type' 			=> 'text',
+						'title' 		=> __('AWS Key ID', $this->text_domain),
+						'subtitle'		=> __('Amazon web services API Key', $this->text_domain),
+						'desc' 			=> __('', $this->text_domain),
+						"default" 		=> '',
+					),
+					array(
+						'id'			=> 'aws_secret_access_key',
+						'type' 			=> 'text',
+						'title' 		=> __('AWS Secret Access Key', $this->text_domain),
+						'subtitle'		=> __('Amazon web services API Secret Access Key', $this->text_domain),
+						'desc' 			=> __('', $this->text_domain),
+						"default" 		=> '',
+					),
+					array(
+						'id'			=> 's3_bucket',
+						'type' 			=> 'text',
+						'title' 		=> __('S3 Bucket', $this->text_domain),
+						'subtitle'		=> __('S3 Bucket Name', $this->text_domain),
+						'desc' 			=> __('', $this->text_domain),
+						"default" 		=> '',
+					),
+				)
+			);
+
+			$this->sections[] = array(
+				'type' => 'divide',
+			);
 			
 			$this->sections[] = array(
 				'title' => __('Security Settings', $this->text_domain),
@@ -655,7 +700,7 @@ if ( !class_exists( "PrsoGformsAdvUploaderOptions" ) ) {
 					
 				)
 			);
-			
+
 			$this->sections = apply_filters( 'prso_gform_pluploader_redux_options', $this->sections );
 			
 			$this->sections[] = array(
